@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Piedra, Papel o Tijeras</title>
+
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    background:#1e1e1e;
+    color:white;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.piedra{background:#3498db}
+.papel{background:#2ecc71}
+.tijeras{background:#e74c3c}
+
+.resultado{
+    margin-top:30px;
+    font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Piedra, Papel o Tijeras</h1>
+
+<h2>Elige una opción</h2>
+
+<button class="piedra" onclick="jugar('Piedra')">Piedra</button>
+<button class="papel" onclick="jugar('Papel')">Papel</button>
+<button class="tijeras" onclick="jugar('Tijeras')">Tijeras</button>
+
+<div class="resultado">
+<p id="jugador"></p>
+<p id="maquina"></p>
+<p id="resultado"></p>
+</div>
+
+<script>
+
+function jugar(eleccionJugador){
+
+    let opciones=["Piedra","Papel","Tijeras"]
+
+    let eleccionMaquina=opciones[Math.floor(Math.random()*3)]
+
+    document.getElementById("jugador").innerText="Jugador eligió: "+eleccionJugador
+    document.getElementById("maquina").innerText="Máquina eligió: "+eleccionMaquina
+
+    let resultado=""
+
+    if(eleccionJugador==eleccionMaquina){
+        resultado="Empate"
+    }
+    else if(
+        (eleccionJugador=="Piedra" && eleccionMaquina=="Tijeras") ||
+        (eleccionJugador=="Papel" && eleccionMaquina=="Piedra") ||
+        (eleccionJugador=="Tijeras" && eleccionMaquina=="Papel")
+    ){
+        resultado="¡Ganaste!"
+    }
+    else{
+        resultado="Perdiste"
+    }
+
+    document.getElementById("resultado").innerText=resultado
+}
+
+</script>
+
+</body>
+</html>
